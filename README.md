@@ -20,7 +20,7 @@ Untuk API nya sendiri menggunakan beberapa third party yakni **echo** dan **grac
 ## Cara Instalasi 
 Ada 2 metode yakni secara langsung  atau secara docker. Pertama-tama, anda clone dulu repository ini
 - Instalasi langsung 
-    1. Pastikan di server / komputer anda sudah terinstall docker dan ada internet. Karena akan dilakukan  docnload library2 
+    1. Pastikan di server / komputer anda sudah  ada internet. Karena akan dilakukan  docnload library2 
        dari internet
     2. Karena saya pakai mac, maka bisa ikuti step-step berikut :
        ```text
