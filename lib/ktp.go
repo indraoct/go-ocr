@@ -53,6 +53,8 @@ func FormatDataKTP(text string)(formatKtp Ktp,err error){
 		if len(obj) > 1 {
 			data = strings.TrimSpace(obj[1])
 			data = reg.ReplaceAllString(data,"")
+		}else{
+			data = reg.ReplaceAllString(data,"")
 		}
 
 		if countData == 0{
@@ -134,6 +136,10 @@ func ValidateImageKtp(filename string) (err error){
 
 	if err != nil{
 		return err
+	}
+
+	if images.Height >= images.Width {
+		return errors.New("Images must be landscape!")
 	}
 
 	if images.Height  < 350 {

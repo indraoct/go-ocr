@@ -1,10 +1,9 @@
 package handler
 
 import (
+	"github.com/labstack/echo"
 	"go-ocr/conf"
 	"go-ocr/lib"
-	"github.com/labstack/echo"
-	"github.com/otiai10/gosseract"
 	"io"
 	"net/http"
 	"os"
@@ -12,7 +11,6 @@ import (
 
 func (h *Handler) KtpOcrRequest(ctx echo.Context) (err error){
 	var(
-		client 			*gosseract.Client
 		text 			string
 		errorCode		int
 		ktp 			lib.Ktp
@@ -57,19 +55,14 @@ func (h *Handler) KtpOcrRequest(ctx echo.Context) (err error){
 		return ctx.JSON(http.StatusBadRequest,res)
 	}
 
-
-	//Go Serract
-	client = gosseract.NewClient()
-	defer client.Close()
-
 	//image input
-	client.SetImage(filename)
+	h.Gosseract.SetImage(filename)
 
 	//define language
-	client.SetLanguage("eng")
+	h.Gosseract.SetLanguage("eng")
 
 	//generate text from image
-	text, err = client.Text()
+	text, err = h.Gosseract.Text()
 
 	if err != nil{
 		res = h.getErrorResponse(ctx,401,err.Error())

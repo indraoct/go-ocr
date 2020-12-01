@@ -1,6 +1,7 @@
 package main
 
 import (
+	"github.com/otiai10/gosseract"
 	"go-ocr/router"
 	"github.com/labstack/echo"
 	"github.com/tylerb/graceful"
@@ -14,7 +15,9 @@ func main() {
 	conf.InitConfig()
 	e := echo.New()
 
-	router.AssignRouting(e)
+	gosseract := gosseract.NewClient()
+
+	router.AssignRouting(e, gosseract)
 	e.Server.Addr = conf.Config.Port
 
 	graceful.ListenAndServe(e.Server, 5*time.Second)

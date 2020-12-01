@@ -2,10 +2,11 @@ package handler
 
 import (
 	"github.com/labstack/echo"
+	"github.com/otiai10/gosseract"
 )
 
 type Handler struct {
-
+	Gosseract 	*gosseract.Client
 }
 
 type ResponsePayload struct {
